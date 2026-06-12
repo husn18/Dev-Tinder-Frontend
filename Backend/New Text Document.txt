@@ -1,0 +1,3 @@
+ mango password 8qbvzP0BDJEYVHYb
+
+mongodb+srv://Dev-Tinder:8qbvzP0BDJEYVHYb@dev-tinder.uxi7hcw.mongodb.net/ 

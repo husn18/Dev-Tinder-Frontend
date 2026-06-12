@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@plugin "daisyui"; 
+
+:root {
+  /* Default Dark Mode (Linear specification) */
+  --canvas-color: #010102;
+  --surface-1-color: #0f1011;
+  --surface-2-color: #141516;
+  --surface-3-color: #18191a;
+  --surface-4-color: #191a1b;
+  --accent-primary-color: #5e6ad2;
+  --accent-hover-color: #828fff;
+  --hairline-color: #23252a;
+  --ink-color: #f7f8f8;
+  --ink-muted-color: #d0d6e0;
+  --ink-subtle-color: #8a8f98;
+  --success-green-color: #27a644;
+}
+
+[data-theme="light"] {
+  /* Light Mode alternative (Design spec inverse colors) */
+  --canvas-color: #fcfcfd;
+  --surface-1-color: #f4f5f6;
+  --surface-2-color: #ebedef;
+  --surface-3-color: #e2e5e9;
+  --surface-4-color: #d8dde2;
+  --accent-primary-color: #5e6ad2;
+  --accent-hover-color: #4955b9;
+  --hairline-color: #cbd5e1;
+  --ink-color: #090a0b;
+  --ink-muted-color: #334155;
+  --ink-subtle-color: #64748b;
+  --success-green-color: #22c55e;
+}
+
+@theme {
+  --color-canvas: var(--canvas-color);
+  --color-surface-1: var(--surface-1-color);
+  --color-surface-2: var(--surface-2-color);
+  --color-surface-3: var(--surface-3-color);
+  --color-surface-4: var(--surface-4-color);
+  --color-accent-primary: var(--accent-primary-color);
+  --color-accent-hover: var(--accent-hover-color);
+  --color-hairline: var(--hairline-color);
+  --color-ink: var(--ink-color);
+  --color-ink-muted: var(--ink-muted-color);
+  --color-ink-subtle: var(--ink-subtle-color);
+  --color-success-green: var(--success-green-color);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    transition: background-color 150ms ease;
+  }
+
+  body {
+    min-width: 320px;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  /* Scrollbar override */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-2);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-primary);
+  }
+
+  /* Core App Shell */
+  .app-shell {
+    background-color: var(--color-canvas);
+    min-height: calc(100vh - 4rem);
+    transition: background-color 150ms ease;
+  }
+
+  /* Linear Surface Panel specs */
+  .linear-panel-1 {
+    background-color: var(--color-surface-1);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-lg);
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+
+  .linear-panel-2 {
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-lg);
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+
+  /* Standard Input field style */
+  .field-input {
+    min-height: 2.5rem;
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-hairline);
+    background-color: var(--color-surface-1);
+    padding: 0.5rem 0.75rem;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 150ms ease;
+  }
+
+  .field-input:focus-visible {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 2px rgba(94, 106, 210, 0.4);
+    background-color: var(--color-surface-2);
+  }
+
+  /* Accent focus rings */
+  .focus-ring {
+    outline: none;
+  }
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-canvas), 0 0 0 4px var(--color-accent-primary);
+  }
+}
